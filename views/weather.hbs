@@ -1,0 +1,34 @@
+<h1>Weather Data</h1>
+
+<ul>
+{{#each weatherData}}
+ <li>{{@key}} : {{this}}</li> {{!--key=name, temp, country --}}
+</li>
+{{/each}}
+</ul>
+
+           
+    <input type="text" name="city" placeholder="City..."></input>
+    <input type="text" name="country" placeholder="Country..."></input>
+    <button>Get Weather</button>
+
+<ul>
+        <li>
+            <p>City: {{city}}</p>
+        </li>
+        <li>
+            <p>Country: {{country}}</p>
+        </li>
+        <li>
+            <p>Temperature: {{temperature}}</p>
+        </li>
+        <li>
+            <p>Description: {{description}}</p>
+        </li>
+        <li>
+            <p>Humidity: {{humidity}}</p>
+        </li>
+
+    </ul>
+
+<img src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="weather icon">

@@ -12,7 +12,9 @@ router.get('/starWars', async (req, res) => {
     console.log(data)
     res.render('starWars', {
         data,
-        title: `You have been randomly sorted into: ${data.name}`
+        title: `Star Wars Character: ${data.name}`,
+        hair: `Hair Colour: ${data.hair_color}`,
+        gender: `Gender: ${data.gender}`
     })
 })
 
@@ -27,17 +29,44 @@ router.get('/harryPotter', async (req, res) => {
 
 router.get('/chuckNorris', async (req, res) => {
     let data = await getWeather.chuckNorris()
-    console.log(data)
+    
+    data = JSON.parse(data);
+    console.log(data);
+
+    console.log(data.value);
+   
+    //////////////////////////////
+    let joke = data.value
+    // console.log(joke)
+    // push data into the array - how can you pull the [6] out of that array?
+
     res.render('chuckNorris', {
         data,
-        title: `You have been given a random joke: ${data}`
+        joke: joke
+        // title: data.value
+    })
+})
+router.get('/nasa', async (req, res) => {
+    let data = await getWeather.getNasa()
+    console.log(data)
+    res.render('nasa', {
+        data,
+        date: `NASA info: ${data.date}`,
+        explain: data.explanation,
+        title: data.title,
+        url: data.url
     })
 })
 
 
 // ... all other routes (app.get from index.js)
 
-router.post('/', async(req,res) => {
+router.get('/weather', async (req, res) => {
+    let data = await getWeather.getWeather()
+    res.render('weather');
+})
+
+router.post('/weather', async(req,res) => {
     let city = req.body.city;
     let countryCode = req.body.countryCode;
 
@@ -56,7 +85,7 @@ router.post('/', async(req,res) => {
 
     console.log(data);
 
-    res.render('index', {weatherData, icon});
+    res.render('weather', {weatherData, icon});
     
 });
 
