@@ -8,13 +8,34 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/starWars', async (req, res) => {
-    let data = await getWeather.getSwapi()
-    console.log(data)
+    
+    let random =  Math.ceil(Math.random() * 87) // quick fix
+    // better is a for loop to loop through - take a look back at the for loop section to mess around and play
+    let data = await getWeather.getSwapi(random)
+//     for (let i = 1; i < 88; i++){
+//         console.log([i])
+//    }
+
+//    let data = await getWeather.getSwapi(i)
+   console.log(data)
+    
     res.render('starWars', {
         data,
         title: `Star Wars Character: ${data.name}`,
         hair: `Hair Colour: ${data.hair_color}`,
         gender: `Gender: ${data.gender}`
+    })
+})
+
+router.get('/nasa', async (req, res) => {
+    let data = await getWeather.getNasa()
+    console.log(data)
+    res.render('nasa', {
+        data,
+        date: data.date,
+        explain: data.explanation,
+        title: data.title,
+        url: data.url
     })
 })
 
@@ -35,28 +56,16 @@ router.get('/chuckNorris', async (req, res) => {
 
     console.log(data.value);
    
-    //////////////////////////////
     let joke = data.value
     // console.log(joke)
     // push data into the array - how can you pull the [6] out of that array?
 
     res.render('chuckNorris', {
         data,
-        joke: joke
-        // title: data.value
+        joke: joke     
     })
 })
-router.get('/nasa', async (req, res) => {
-    let data = await getWeather.getNasa()
-    console.log(data)
-    res.render('nasa', {
-        data,
-        date: `NASA info: ${data.date}`,
-        explain: data.explanation,
-        title: data.title,
-        url: data.url
-    })
-})
+
 
 
 // ... all other routes (app.get from index.js)
@@ -66,19 +75,19 @@ router.get('/weather', async (req, res) => {
     res.render('weather');
 })
 
-router.post('/weather', async(req,res) => {
+router.post('/weather', async (req,res) => {
     let city = req.body.city;
     let countryCode = req.body.countryCode;
 
-    let data = await getWeather(city, countryCode);
+    let data = await getWeather.getWeather(city, countryCode);
 
     let weatherData = {
-        name: data.name,
-        country: data.sys.country,
-        description: data.weather[0].description,
-        temp: data.main.temp,
-        sunrise: new Date(data.sys.sunrise),
-        sunset: new Date(data.sys.sunset)
+        Name: data.name,
+        Country: data.sys.country,
+        Description: data.weather[0].description,
+        Temperature: `${data.main.temp} Celsius`,
+        Sunrise: new Date(data.sys.sunrise),
+        Sunset: new Date(data.sys.sunset)
         
     }
     let icon = data.weather[0].icon;
