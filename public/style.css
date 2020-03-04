@@ -44,6 +44,13 @@ a:link, a:visited {
     align-items: center;
     display:flex;
     flex-direction: column;
+    background-image: url("/images/wildwest.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: relative;
+    height: 100vh;
+    
 }
 .chuckBtn{
     background-color: #555555;
@@ -58,6 +65,13 @@ a:link, a:visited {
     align-items: center;
     display:flex;
     flex-direction: column;
+    border-style: groove;
+    border-width: 7px;
+    border-color: coral;
+    width: 800px;
+    margin-left: 550px;
+    margin-top: 10px;
+    
 }
 .harryFont{
     font-family: "parry hotter";
@@ -86,7 +100,12 @@ a:link, a:visited {
 }
 
 /* Weather Styling */
-
+/* .weatherDiv{
+    
+} */
+.weatherIcon{
+visibility: hidden;
+}
 input[type=text] {
     width: 20%;
     padding: 12px 20px;
@@ -107,6 +126,9 @@ input[type=text] {
     font-size: 16px;
     border-radius: 4px;
     width: 10%;
+  }
+  input[type=submit]:weatherIcon{
+      visibility: visible;
   }
 
   .submit:hover{
