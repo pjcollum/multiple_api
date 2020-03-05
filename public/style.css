@@ -3,7 +3,7 @@ html{
 }
 
 /* Nav Bar Styling */
-
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
 .navBar{
     background-color:black;
     color: white;
@@ -13,6 +13,8 @@ html{
     margin-top: -10px;
     margin-left: -10px;
     margin-right: -10px;   
+    font-family: 'Permanent Marker', cursive;
+    
 }
 
 a:link, a:visited {
@@ -66,7 +68,7 @@ a:link, a:visited {
     display:flex;
     flex-direction: column;
     border-style: groove;
-    border-width: 7px;
+    border-width: 20px;
     border-color: coral;
     width: 800px;
     margin-left: 550px;
@@ -74,6 +76,10 @@ a:link, a:visited {
     
 }
 .harryFont{
+    font-family: "parry hotter";
+}
+.harryFont1{
+    font-size: 50px;
     font-family: "parry hotter";
 }
 .hatPic{
@@ -94,15 +100,45 @@ a:link, a:visited {
 }
 
 /* NASA Styling */
-
+.nasaDiv{
+    display: inline-block;
+}
+.nasaHead{
+    display: flex;
+}
 .nasaFont{
     font-family: "Nasalization";
 }
+.nasaPic{
+    width: 150px;
+    height: 150px;
+}
 
 /* Weather Styling */
-/* .weatherDiv{
+.weatherDiv{
+    background-image: url("/images/beach.jpeg");
+    /* background-position: center; */
+     background-repeat: no-repeat; 
+    background-size: auto;
+    background-position: center center;
+    /* position: relative; */
+    height: 100vh;
+    background-color: brown;
+
+  
+} 
+.form{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+}
+.weatherForm{
+    display: inline;
     
-} */
+}
+.weatherHead{
+    margin: 0;
+}
 .weatherIcon{
 visibility: hidden;
 }
