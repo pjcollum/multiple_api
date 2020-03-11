@@ -55,6 +55,7 @@ router.get('/chuckNorris', async (req, res) => {
     console.log(data);
 
     console.log(data.value);
+    
    
     let joke = data.value
     // console.log(joke)
